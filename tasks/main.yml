@@ -1,0 +1,3 @@
+---
+# tasks file for mysql
+- ansible.builtin.include_tasks: mysql.ansible.yaml

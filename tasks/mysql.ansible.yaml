@@ -1,0 +1,22 @@
+- name: "Load MYSQL variables"
+  ansible.builtin.include_vars: mysql.vars.ansible.yaml
+
+- name: "Install MYSQL"
+  ansible.builtin.apt:
+    update_cache: true
+    force: true
+    state: present
+    name: mysql
+
+- name: "Create MYSQL database"
+  community.mysql.mysql_db:
+    name: "{{ mysql_db }}"
+    state: present
+    login_unix_socket: /run/mysqld/mysqld.sock
+
+- name: "Create MYSQL user"
+  community.mysql.mysql_user:
+    name: "{{ mysql_user }}"
+    password: "{{ mysql_password }}"
+    priv: "{{ mysql_privileges }}"
+    state: present
