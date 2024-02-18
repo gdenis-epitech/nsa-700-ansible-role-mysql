@@ -1,20 +1,29 @@
 - name: "Load MYSQL variables"
   ansible.builtin.include_vars: mysql.vars.ansible.yaml
 
-- name: "Install MYSQL"
+- name: "Install dependencies"
   ansible.builtin.apt:
     update_cache: true
     force: true
     state: present
-    name: mysql
+    name:
+      - software-properties-common
+      - dirmngr
 
-- name: "Create MYSQL database"
+- name: "Install MariaDB"
+  ansible.builtin.apt:
+    update_cache: true
+    force: true
+    state: present
+    name: mariadb-server
+
+- name: "Create MariaDB database"
   community.mysql.mysql_db:
     name: "{{ mysql_db }}"
     state: present
     login_unix_socket: /run/mysqld/mysqld.sock
 
-- name: "Create MYSQL user"
+- name: "Create MariaDB user"
   community.mysql.mysql_user:
     name: "{{ mysql_user }}"
     password: "{{ mysql_password }}"
