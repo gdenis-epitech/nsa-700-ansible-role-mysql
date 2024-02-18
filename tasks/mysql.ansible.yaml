@@ -23,7 +23,6 @@
     login_password: "{{ mysql_root_password }}"
     name: "{{ mysql_db }}"
     state: present
-    login_unix_socket: /run/mysqld/mysqld.sock
 
 - name: "Create MariaDB user"
   community.mysql.mysql_user:
