@@ -8,7 +8,7 @@
     state: present
     name:
       - software-properties-common
-      - dirmngr
+      - python3-pymysql
 
 - name: "Install MariaDB"
   ansible.builtin.apt:
