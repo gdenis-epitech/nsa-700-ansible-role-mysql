@@ -30,3 +30,8 @@
     password: "{{ mysql_password }}"
     priv: "{{ mysql_privileges }}"
     state: present
+
+- name: "Restart MariaDB with updated configuration"
+  ansible.builtin.service:
+    name: mysql
+    state: restarted
