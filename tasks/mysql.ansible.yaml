@@ -30,7 +30,7 @@
     name: "{{ mysql_user }}"
     password: "{{ mysql_password }}"
     priv: "{{ mysql_privileges }}"
-    host: "{{ mysql_remote_host }}"
+    host: "{{ mysql_remote_host_ip }}"
     state: present
 
 - name: "Restart MariaDB with updated configuration"
