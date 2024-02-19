@@ -2,6 +2,7 @@
   ansible.builtin.include_vars: mysql.vars.ansible.yaml
 
 - name: "Install dependencies"
+  become: true
   ansible.builtin.apt:
     update_cache: true
     force: true
@@ -11,6 +12,7 @@
       - python3-pymysql
 
 - name: "Install MariaDB"
+  become: true
   ansible.builtin.apt:
     update_cache: true
     force: true
