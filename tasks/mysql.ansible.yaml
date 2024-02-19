@@ -36,11 +36,13 @@
     state: present
 
 - name: "Update mariadb server config file"
+  become: true
   ansible.builtin.copy:
     src: files/50-server.cnf
     dest: /etc/mysql/mariadb.conf.d/50-server.cnf
 
 - name: "Restart MariaDB with updated configuration"
+  become: true
   ansible.builtin.service:
     name: mysql
     state: restarted
