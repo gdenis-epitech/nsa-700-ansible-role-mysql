@@ -33,6 +33,11 @@
     host: "{{ mysql_remote_host_ip }}"
     state: present
 
+- name: "Update mariadb server config file"
+  ansible.builtin.copy:
+    src: files/50-server.cnf
+    dest: /etc/mysql/mariadb.conf.d/50-server.cnf
+
 - name: "Restart MariaDB with updated configuration"
   ansible.builtin.service:
     name: mysql
