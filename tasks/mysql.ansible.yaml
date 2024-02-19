@@ -20,12 +20,14 @@
     name: mariadb-server
 
 - name: "Create MariaDB database"
+  become: true
   community.mysql.mysql_db:
     login_unix_socket: /var/run/mysqld/mysqld.sock
     name: "{{ mysql_db }}"
     state: present
 
 - name: "Create MariaDB user"
+  become: true
   community.mysql.mysql_user:
     login_unix_socket: /var/run/mysqld/mysqld.sock
     column_case_sensitive: true
